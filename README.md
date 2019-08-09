@@ -1,4 +1,4 @@
-# confidence_interval_auc
+# Calculate Confidence Interval of AUC
 
 Place script in working directory and then you can use function by:
 
