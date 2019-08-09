@@ -28,4 +28,6 @@ def conf_auc(test_predictions, ground_truth, bootstrap=1000, seed=None,  confint
     confidence_lower = sorted_scores[int(lower_bound * len(sorted_scores))]
     confidence_upper = sorted_scores[int(upper_bound * len(sorted_scores))]
     print("{:0.0f}% confidence interval for the score: [{:0.3f} - {:0.3}]".format(confint*100, confidence_lower, confidence_upper))
+    confidence_interval = (confidence_lower, confidence_upper)
+    return confidence_interval
 
