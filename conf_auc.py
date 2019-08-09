@@ -4,11 +4,13 @@ import sklearn
 from sklearn import metrics
 
 
-def conf_auc(test_predictions, ground_truth, bootstrap=1000, seed=42,  confint=0.95):
+def conf_auc(test_predictions, ground_truth, bootstrap=1000, seed=None,  confint=0.95):
     """Takes as input test predictions, ground truth, number of bootstraps, seed, and confidence interval"""
-    #inspired by https://stackoverflow.com/questions/19124239/scikit-learn-roc-curve-with-confidence-intervals
+    #inspired by https://stackoverflow.com/questions/19124239/scikit-learn-roc-curve-with-confidence-intervals by ogrisel
     bootstrapped_scores = []
     rng = np.random.RandomState(seed)
+    if confint>1:
+        confint=confint/100
     for i in range(bootstrap):
         # bootstrap by sampling with replacement on the prediction indices
         indices = rng.randint(0, len(test_predictions) - 1, len(test_predictions))
