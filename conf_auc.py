@@ -27,7 +27,8 @@ def conf_auc(test_predictions, ground_truth, bootstrap=1000, seed=None,  confint
     upper_bound=1-lower_bound
     confidence_lower = sorted_scores[int(lower_bound * len(sorted_scores))]
     confidence_upper = sorted_scores[int(upper_bound * len(sorted_scores))]
-    print("{:0.0f}% confidence interval for the score: [{:0.3f} - {:0.3}]".format(confint*100, confidence_lower, confidence_upper))
-    confidence_interval = (confidence_lower, confidence_upper)
+    auc = metrics.roc_auc_score(ground_truth, test_predictions)
+    print("{:0.0f}% confidence interval for the score: [{:0.3f} - {:0.3}] and your AUC is: {:0.3f}".format(confint*100, confidence_lower, confidence_upper, auc))
+    confidence_interval = (confidence_lower, auc, confidence_upper)
     return confidence_interval
 
