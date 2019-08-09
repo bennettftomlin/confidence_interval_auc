@@ -6,7 +6,7 @@ from sklearn import metrics
 
 def conf_auc(test_predictions, ground_truth, bootstrap=1000, seed=42,  confint=0.95):
     """Takes as input test predictions, ground truth, number of bootstraps, seed, and confidence interval"""
-    #inspired by https://stackoverflow.com/questions/19124239/scikit-learn-roc-curve-with-confidence-intervals
+    #inspired by https://stackoverflow.com/questions/19124239/scikit-learn-roc-curve-with-confidence-intervals by ogrisel
     bootstrapped_scores = []
     rng = np.random.RandomState(seed)
     for i in range(bootstrap):
